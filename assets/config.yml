@@ -1,27 +1,47 @@
-base_model: Qwen/Qwen2-7B
+base_model: Qwen/Qwen2-7B-Instruct
+model_type: AutoModelForCausalLM
 load_in_4bit: true  #4Bit的精度
 bnb_4bit_compute_dtype: float16
-gradient_checkpointing: true #梯度檢查點
-lora_r: 64
-lora_alpha: 16
-lora_dropout: 0.05
+bf16: true
+trust_remote_code: true
 
-#transformer用的資料頭?
-target_modules:
-  - q_proj
-  - k_proj
-  - v_proj
-  - o_proj
+datasets:
+  - path: data/tsun_sft.jsonl
+    type: alpaca
 
-dataset: data/tsun_mentor_sft.jsonl #設定檔的位置
-dataset_format: instruct
-output_dir: out/tsun-mentor-qwen7b-lora
+dataset_prepared_path: .cache/ax_leo
+output_dir: ckpts/tsun-qwen2-7b-qlora
+save_safetensors: true
+save_steps: 200
+logging_steps: 20
+eval_steps: 200
+evaluation_strategy: steps
+do_eval: true
+val_set_size: 0.1
 sequence_len: 2048
-micro_batch_size: 1
+sample_packing: false
+
+adapter: lora
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+#transformer用的資料頭?
+target_modules: [q_proj,k_proj,v_proj,o_proj,up_proj,down_proj,gate_proj]
+
+gradient_checkpointing: true
+
+#gradient_accumulation_steps（我前面縮成 grad_accum）的意思是：
+#每多少 step 才把累積的梯度做一次反向更新 (optimizer.step)。
+#有效 batch size = per_device_train_batch_size × gradient_accumulation_steps × GPU數
 gradient_accumulation_steps: 8
-epochs: 2
-lr: 1.5e-4
+per_device_train_batch_size: 2
+
+per_device_eval_batch_size: 2
+optim: adamw_torch
+lr_scheduler: cosine
+learning_rate: 1.0e-4
+weight_decay: 0.01
+max_grad_norm: 0.3
 warmup_ratio: 0.03
-optimizer: adamw_torch
-save_steps: 100
-logging_steps: 10
+num_train_epochs: 2
+report_to: none
