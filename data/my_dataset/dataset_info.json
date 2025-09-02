@@ -1,0 +1,24 @@
+{
+  "my_dataset": {
+    "file_name": "train.jsonl",
+    "format": "alpaca",
+    "path_or_name": "data/my_dataset",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output",
+      "history": null
+    }
+  },
+  "my_validation_set": {
+    "file_name": "eval.jsonl",
+    "format": "alpaca",
+    "path_or_name": "data/my_dataset",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output",
+      "history": null
+    }
+  }
+}

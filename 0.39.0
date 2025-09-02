@@ -1,0 +1,14 @@
+Collecting bitsandbytes
+  Downloading bitsandbytes-0.47.0-py3-none-win_amd64.whl.metadata (11 kB)
+Requirement already satisfied: torch<3,>=2.2 in c:\users\user\miniconda3\envs\llm_factory\lib\site-packages (from bitsandbytes) (2.8.0)
+Requirement already satisfied: numpy>=1.17 in c:\users\user\miniconda3\envs\llm_factory\lib\site-packages (from bitsandbytes) (1.26.4)
+Requirement already satisfied: filelock in c:\users\user\miniconda3\envs\llm_factory\lib\site-packages (from torch<3,>=2.2->bitsandbytes) (3.19.1)
+Requirement already satisfied: typing-extensions>=4.10.0 in c:\users\user\miniconda3\envs\llm_factory\lib\site-packages (from torch<3,>=2.2->bitsandbytes) (4.15.0)
+Requirement already satisfied: sympy>=1.13.3 in c:\users\user\miniconda3\envs\llm_factory\lib\site-packages (from torch<3,>=2.2->bitsandbytes) (1.14.0)
+Requirement already satisfied: networkx in c:\users\user\miniconda3\envs\llm_factory\lib\site-packages (from torch<3,>=2.2->bitsandbytes) (3.5)
+Requirement already satisfied: jinja2 in c:\users\user\miniconda3\envs\llm_factory\lib\site-packages (from torch<3,>=2.2->bitsandbytes) (3.1.6)
+Requirement already satisfied: fsspec in c:\users\user\miniconda3\envs\llm_factory\lib\site-packages (from torch<3,>=2.2->bitsandbytes) (2025.3.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in c:\users\user\miniconda3\envs\llm_factory\lib\site-packages (from sympy>=1.13.3->torch<3,>=2.2->bitsandbytes) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\users\user\miniconda3\envs\llm_factory\lib\site-packages (from jinja2->torch<3,>=2.2->bitsandbytes) (3.0.2)
+Downloading bitsandbytes-0.47.0-py3-none-win_amd64.whl (60.7 MB)
+   -------------------------------------    56.9/60.7 MB 245.8 kB/s eta 0:00:16

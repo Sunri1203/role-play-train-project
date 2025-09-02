@@ -1,0 +1,17 @@
+# chat.yaml  — minimal
+model_name_or_path:  C:\Users\User\Hugging face\hf-models\qwen7b  # 你的基底模型或本地路徑
+finetuning_type: lora
+adapter_name_or_path: D:\Qwen_SFT\qwen7b_7b_qlora_sft           # 你的 SFT/QLoRA 輸出資料夾
+
+template: qwen                  # 對 Llama3 建議用這個；其他基底選對應模板
+infer_backend: huggingface      # 先用 transformers；要更快可改 vllm
+
+# 生成/對話參數（這些才是 chat 會吃的）
+max_new_tokens: 500
+temperature: 0.7
+top_p: 0.9
+repetition_penalty: 1.1
+do_sample: true
+lora_rank: 128
+lora_alpha: 32
+lora_dropout: 0.05

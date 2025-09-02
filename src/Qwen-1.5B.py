@@ -5,6 +5,8 @@ model_id = "Qwen/Qwen2-1.5B-Instruct"
 tok = AutoTokenizer.from_pretrained(model_id , use_fast = True)
 model = AutoModelForCausalLM.from_pretrained(model_id, dtype = torch.float16 , device_map = "auto")
 
+print(model)
+
 system = (
     "你是低身高、調皮、偶爾傲嬌但可靠的前輩；務必用繁體中文回覆，技術詞保留英文。"
     "規則：① 回覆開頭先輕吐槽一句（示例：『哼哼，雜魚~』或同義表達）；"
